@@ -5,4 +5,6 @@
     <string name="LoginBoton">Login</string>
     <string name="RegisterBoton">Register</string>
     <string name="RegisterBoton2">Register</string>
+    <string name="pass">password</string>
+    <string name="nm">Name</string>
 </resources>
