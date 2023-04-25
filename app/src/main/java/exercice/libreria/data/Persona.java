@@ -1,5 +1,10 @@
 package exercice.libreria.data;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import static exercice.libreria.data.PersonaContrac.PersonaEntry;
+
+
 public class Persona {
     private int idPersona;
     private String namePersona;
@@ -9,6 +14,21 @@ public class Persona {
         this.idPersona = idPersona;
         this.namePersona = namePersona;
         this.passwordPersona = passwordPersona;
+    }
+
+    public Persona(Cursor cursor) {
+        idPersona = cursor.getInt(cursor.getColumnIndex(PersonaEntry.ID));
+        namePersona = cursor.getString(cursor.getColumnIndex(PersonaEntry.NAME));
+        passwordPersona = cursor.getString(cursor.getColumnIndex(PersonaEntry.PASSWORD));
+
+    }
+
+    public ContentValues toContentValues() {
+        ContentValues values = new ContentValues();
+        values.put(PersonaContrac.PersonaEntry.ID, idPersona);
+        values.put(PersonaEntry.NAME, namePersona);
+        values.put(PersonaEntry.PASSWORD, passwordPersona);
+        return values;
     }
 
     public int getIdPersona() {

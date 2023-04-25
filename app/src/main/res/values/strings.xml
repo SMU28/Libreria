@@ -7,4 +7,7 @@
     <string name="RegisterBoton2">Register</string>
     <string name="pass">password</string>
     <string name="nm">Name</string>
+    <string name="idhint">id</string>
+    <string name="passwordhint">password</string>
+    <string name="nameEditText">Name</string>
 </resources>
