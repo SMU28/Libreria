@@ -1,23 +1,30 @@
 package exercice.libreria;
 
+import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import exercice.libreria.data.DAOLibreria;
+import exercice.libreria.data.Persona;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link LoginFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LoginFragment extends Fragment implements View.OnClickListener {
+public class LoginFragment extends Fragment implements View.OnClickListener, PersonaRecyclerViewAdapter.OnItemClickListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,6 +37,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     private Button register;
     private Button login;
+    private RecyclerView listaPersonas;
+    private PersonaRecyclerViewAdapter adaptadorPersona;
+    private LinearLayoutManager linearLayoutManager;
+    private DAOLibreria dbLibreria;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -75,7 +86,40 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         login= (Button) view.findViewById(R.id.BotonL);
         register.setOnClickListener(this);
         login.setOnClickListener(this);
+        //RecyclerView
+        listaPersonas =(RecyclerView) view.findViewById(R.id.listaPersonasRV);
+        dbLibreria = new DAOLibreria(this.getContext());
+        listaPersonas.setHasFixedSize(true);
+        linearLayoutManager = new LinearLayoutManager( this.getContext());
+        listaPersonas.setLayoutManager(linearLayoutManager);
+        adaptadorPersona = new PersonaRecyclerViewAdapter(this);
+        listaPersonas.setAdapter(adaptadorPersona);
+        loadUsuarios();
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    private void loadUsuarios() {
+        new UsuarioLoaderTask().execute( );
+    }
+
+    private class UsuarioLoaderTask extends AsyncTask<Void, Void, Cursor> {
+
+        @Override
+        protected Cursor doInBackground(Void... voids) {
+            return dbLibreria.getAllPersonas();
+        }
+
+        @Override
+        protected void onPostExecute(Cursor cursor) {
+            if (cursor != null && cursor.getCount() > 0) {
+                adaptadorPersona.swapCursor( cursor );
+            }
+        }
+    }
+    @Override
+    public void onClick(PersonaRecyclerViewAdapter.ViewHolder view, Persona personaActualizada) {
+        dbLibreria.updatePersona(personaActualizada,Integer.toString(personaActualizada.getIdPersona()));
+        loadUsuarios();
     }
 
     @Override
