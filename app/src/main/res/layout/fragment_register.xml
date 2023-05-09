@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -11,21 +12,24 @@
         android:layout_height="wrap_content"
         android:text="REGISTER"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/editTextID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="ID"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        tools:ignore="Autofill,HardcodedText,TextFields" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nombre"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        tools:ignore="Autofill,HardcodedText,TextFields" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -33,18 +37,14 @@
         android:layout_height="wrap_content"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        tools:ignore="Autofill,HardcodedText" />
 
     <Button
         android:id="@+id/BotonR2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrar" />
-
-    <Button
-        android:id="@+id/BotonVolver"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Volver" />
+        android:text="Registrar"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

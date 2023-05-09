@@ -114,8 +114,7 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 registrar(v);
-                Toast.makeText(getActivity(), "Se ha registrado exitosamente", Toast.LENGTH_SHORT).show();
-            }
+                }
         });
 
         return view;
