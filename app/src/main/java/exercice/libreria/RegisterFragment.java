@@ -1,13 +1,18 @@
 package exercice.libreria;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import exercice.libreria.data.DAOLibreria;
 import exercice.libreria.data.Persona;
@@ -32,13 +37,34 @@ public class RegisterFragment extends Fragment {
     private EditText password;
     private DAOLibreria DAO;
 
-    public void registrar (View v){
-        Persona personaguardar = new Persona(
-                Integer.parseInt(id.getText().toString()),
-                name.getText().toString(),
-                password.getText().toString());
-        DAO.savePersona(personaguardar);
+    public void registrar(View v) {
+            String idString = id.getText().toString();
+            String nameString = name.getText().toString();
+            String passwordString = password.getText().toString();
+
+            if (idString.isEmpty() || nameString.isEmpty() || passwordString.isEmpty()) {
+                Toast.makeText(getActivity(), "Faltan datos por completar", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Persona personaguardar = new Persona(
+                    Integer.parseInt(idString),
+                    nameString,
+                    passwordString);
+            DAO.savePersona(personaguardar);
+
+            Toast.makeText(getActivity(), "Registro exitoso", Toast.LENGTH_SHORT).show();
+
+
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentContainerView, new LoginFragment());
+        transaction.commit();
+
     }
+
+
+
 
     public RegisterFragment() {
         // Required empty public constructor
@@ -69,12 +95,30 @@ public class RegisterFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
 
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_register, container, false);
+
+        id = view.findViewById(R.id.editTextID);
+        name = view.findViewById(R.id.editTextTextPersonName2);
+        password = view.findViewById(R.id.editTextPassword);
+        Button btnRegistrar = view.findViewById(R.id.BotonR2);
+
+        DAO = new DAOLibreria(getActivity().getApplicationContext());
+
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registrar(v);
+                Toast.makeText(getActivity(), "Se ha registrado exitosamente", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return view;
     }
+
 }
