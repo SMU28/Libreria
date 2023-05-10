@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding ="16dp"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/img_libro_sabrina"
-        android:layout_width="0dp"
-        android:layout_height="146dp"
-        android:layout_weight="1"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/a" />
-
+        android:id="@+id/Libro1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        />
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/NomLib1"
+        android:layout_toRightOf="@id/Libro1"
+        android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="146dp"
-        android:layout_weight="1"
-        android:text="TextView" />
-
-</LinearLayout>
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:text="Name"
+        />
+</RelativeLayout>

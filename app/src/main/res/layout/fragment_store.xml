@@ -6,20 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".StoreFragment" >
 
-    <TextView
-        android:id="@+id/Precio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Precio"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ListView
         android:id="@+id/Libros"
         android:layout_width="371dp"
         android:layout_height="390dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="58dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.046" />
+
+    <Button
+        android:id="@+id/BotonCompra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
+        android:text="@string/BotonCompra"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Libros"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/Precio"
+        android:layout_width="132dp"
+        android:layout_height="49dp"
+        android:text="@string/CosteLib"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.574"
+        app:layout_constraintStart_toEndOf="@+id/BotonCompra"
+        app:layout_constraintTop_toBottomOf="@+id/Libros"
+        app:layout_constraintVertical_bias="0.17" />
 </androidx.constraintlayout.widget.ConstraintLayout>

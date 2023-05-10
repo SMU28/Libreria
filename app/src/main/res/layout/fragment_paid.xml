@@ -1,14 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     tools:context=".PaidFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/TextPago"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/MedioDePago" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/asasas" />
+
+        </TableRow>
+
+        <EditText
+            android:id="@+id/Adress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="@string/Direccion" />
+
+        <EditText
+            android:id="@+id/PhoneNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone"
+            android:text="Phone" />
+
+        <EditText
+            android:id="@+id/editTextText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Name" />
+
+        <Button
+            android:id="@+id/Fincompra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/FinComprita" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

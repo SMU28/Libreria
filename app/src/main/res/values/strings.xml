@@ -10,4 +10,9 @@
     <string name="idhint">id</string>
     <string name="passwordhint">password</string>
     <string name="nameEditText">Name</string>
+    <string name="BotonCompra">Comprar</string>
+    <string name="CosteLib">Costo:</string>
+    <string name="MedioDePago">Medio de Pago</string>
+    <string name="Direccion">Adress</string>
+    <string name="FinComprita">Finalizar Compra</string>
 </resources>

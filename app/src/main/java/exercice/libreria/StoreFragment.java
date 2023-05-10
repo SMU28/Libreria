@@ -7,6 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +29,7 @@ public class StoreFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private Button Comprar;
     public StoreFragment() {
         // Required empty public constructor
     }
@@ -53,12 +59,33 @@ public class StoreFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
+
+    ListView Libros;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_store, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_store, container, false);
+
+
+
+        Libros = rootView.findViewById(R.id.Libros);
+
+        ArrayList<listadelibros> arrayList = new ArrayList<>();
+        arrayList.add(new listadelibros(R.drawable.a, "Una noche con Sabrina Love - Pedro Mairal"));
+        arrayList.add(new listadelibros(R.drawable.aa, "Bestiario - Julio Cortazar"));
+        arrayList.add(new listadelibros(R.drawable.aaa, "El principito - Antoine De Saint-Exupéry"));
+        arrayList.add(new listadelibros(R.drawable.aaaa, "Un mundo feliz - Aldous Huxley"));
+
+        listadelibrosAdapter adapter = new listadelibrosAdapter(requireContext(), R.layout.elementos_lista, arrayList);
+
+        Libros.setAdapter(adapter);
+
+
+        return rootView;
     }
 }
