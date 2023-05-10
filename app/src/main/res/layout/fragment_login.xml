@@ -1,107 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginFragment">
+    android:gravity="center"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BookShelf"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <EditText
-        android:id="@+id/nombre"
-        android:layout_width="329dp"
+        android:id="@+id/name_et"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="248dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="438dp"
+        android:layout_marginTop="16dp"
         android:hint="Name"
         android:inputType="textEmailAddress"
         android:maxLines="1"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.8"
-        tools:ignore="Autofill,DuplicateSpeakableTextCheck,HardcodedText" />
+        tools:ignore="Autofill,HardcodedText" />
 
     <EditText
-        android:id="@+id/password"
-        android:layout_width="329dp"
+        android:id="@+id/password_et"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="301dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="385dp"
-        android:hint="password"
+        android:layout_marginTop="16dp"
+        android:hint="Password"
         android:inputType="textPassword"
         android:maxLines="1"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.8"
-        tools:ignore="Autofill,DuplicateSpeakableTextCheck,HardcodedText" />
-
-    <TextView
-        android:id="@+id/BookShelf"
-        android:layout_width="123dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginBottom="613dp"
-        android:text="BookShelf"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck" />
+        tools:ignore="Autofill,HardcodedText" />
 
     <Button
         android:id="@+id/BotonL"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="385dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="298dp"
+        android:layout_marginTop="16dp"
         android:text="@string/LoginBoton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@android:color/white"
+        />
 
     <Button
         android:id="@+id/BotonR"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="449dp"
-        android:layout_marginEnd="153dp"
-        android:layout_marginBottom="234dp"
+        android:layout_marginTop="16dp"
         android:text="@string/RegisterBoton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="TextContrastCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaPersonasRV"
-        android:layout_width="412dp"
-        android:layout_height="170dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:listitem="@layout/usuario_item_layout" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
