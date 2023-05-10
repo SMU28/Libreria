@@ -15,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import exercice.libreria.data.DAOLibreria;
 import exercice.libreria.data.Persona;
@@ -126,11 +128,29 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Per
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.BotonL:
-                Navigation.findNavController(view).navigate(R.id.storeFragment);
+
+                EditText editText = (EditText) getView().findViewById(R.id.name_et);
+                String inputText = editText.getText().toString();
+                EditText editPass = (EditText) getView().findViewById(R.id.password_et);
+                String inputPass = editText.getText().toString();
+
+
+                Cursor cursor = dbLibreria.getPersonaByName(inputText);
+                Cursor cursor1 = dbLibreria.getPersonaByName(inputPass);
+
+
+                if (cursor != null && cursor.getCount() > 0 || cursor1 != null && cursor1.getCount() > 0) {
+
+                    Navigation.findNavController(view).navigate(R.id.storeFragment);
+                } else {
+
+                    Toast.makeText(getActivity(), "No se encontró ninguna persona con el nombre ingresado", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.BotonR:
                 Navigation.findNavController(view).navigate(R.id.registerFragment);
                 break;
         }
     }
+
 }

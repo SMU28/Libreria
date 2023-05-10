@@ -55,17 +55,29 @@ public class DAOLibreria extends SQLiteOpenHelper {
                         null);
     }
 
-    public Cursor getPersonaById(String personaId) {
+    public Cursor getPersonaByName(String personaName) {
         Cursor c = getReadableDatabase().query(
                 PersonaEntry.TABLE_NAME,
                 null,
-                PersonaEntry.ID + " LIKE ?",
-                new String[]{personaId},
+                PersonaEntry.NAME + " LIKE ?",
+                new String[]{personaName},
                 null,
                 null,
                 null);
         return c;
     }
+    public Cursor getPersonaByPass(String personaPass) {
+        Cursor c = getReadableDatabase().query(
+                PersonaEntry.TABLE_NAME,
+                null,
+                PersonaEntry.PASSWORD+ " LIKE ?",
+                new String[]{personaPass},
+                null,
+                null,
+                null);
+        return c;
+    }
+
     public int deletePersona(String personaId) {
         return getWritableDatabase().delete(
               PersonaEntry.TABLE_NAME,
