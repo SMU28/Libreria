@@ -3,6 +3,7 @@ package exercice.libreria;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,11 +70,11 @@ public class StoreFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_store, container, false);
+        View view = inflater.inflate(R.layout.fragment_store, container, false);
 
 
 
-        Libros = rootView.findViewById(R.id.Libros);
+        Libros = view.findViewById(R.id.Libros);
 
         ArrayList<listadelibros> arrayList = new ArrayList<>();
         arrayList.add(new listadelibros(R.drawable.a, "Una noche con Sabrina Love - Pedro Mairal"));
@@ -86,6 +87,14 @@ public class StoreFragment extends Fragment {
         Libros.setAdapter(adapter);
 
 
-        return rootView;
+            Button botonCompra = view.findViewById(R.id.BotonCompra);
+            botonCompra.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Navigation.findNavController(view).navigate(R.id.paidFragment);
+                }
+            });
+
+            return view;
     }
 }
