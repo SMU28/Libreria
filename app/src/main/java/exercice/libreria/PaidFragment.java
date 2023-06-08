@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,22 +60,32 @@ public class PaidFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-
         View view = inflater.inflate(R.layout.fragment_paid, container, false);
 
-
         Button fincompra = view.findViewById(R.id.Fincompra);
-            fincompra.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Navigation.findNavController(view).navigate(R.id.storeFragment);
-                }
-            });
+        fincompra.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText adressEditText = view.findViewById(R.id.Adress);
+                EditText phoneNumEditText = view.findViewById(R.id.PhoneNum);
+                EditText nameEditText = view.findViewById(R.id.editTextText2);
 
-            return view;
-        }
+                String adress = adressEditText.getText().toString();
+                String phoneNum = phoneNumEditText.getText().toString();
+                String name = nameEditText.getText().toString();
+
+                if (!adress.isEmpty() && !phoneNum.isEmpty() && !name.isEmpty()) {
+                    Toast.makeText(getActivity(), "Gracias por la compra", Toast.LENGTH_SHORT).show();
+                    Navigation.findNavController(view).navigate(R.id.storeFragment);
+                } else {
+                    Toast.makeText(getActivity(), "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        return view;
     }
+
+}
