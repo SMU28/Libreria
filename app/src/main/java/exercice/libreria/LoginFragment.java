@@ -132,20 +132,21 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Per
                 EditText editText = (EditText) getView().findViewById(R.id.name_et);
                 String inputText = editText.getText().toString();
                 EditText editPass = (EditText) getView().findViewById(R.id.password_et);
-                String inputPass = editText.getText().toString();
+                String inputPass = editPass.getText().toString();
 
-
-                Cursor cursor = dbLibreria.getPersonaByName(inputText);
-                Cursor cursor1 = dbLibreria.getPersonaByName(inputPass);
-
-
-                if (cursor != null && cursor.getCount() > 0 || cursor1 != null && cursor1.getCount() > 0) {
-
-                    Navigation.findNavController(view).navigate(R.id.storeFragment);
+                if (inputText.isEmpty() || inputPass.isEmpty()) {
+                    Toast.makeText(getActivity(), "Ingresa tanto el nombre como la contraseña", Toast.LENGTH_SHORT).show();
                 } else {
+                    Cursor cursor = dbLibreria.getPersonaByName(inputText);
+                    Cursor cursor1 = dbLibreria.getPersonaByPass(inputPass);
 
-                    Toast.makeText(getActivity(), "No se encontró ninguna persona con el nombre ingresado", Toast.LENGTH_SHORT).show();
+                    if (cursor != null && cursor.getCount() > 0 && cursor1 != null && cursor1.getCount() > 0) {
+                        Navigation.findNavController(view).navigate(R.id.storeFragment);
+                    } else {
+                        Toast.makeText(getActivity(), "No se encontró ninguna persona con el nombre ingresado", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
                 break;
             case R.id.BotonR:
                 Navigation.findNavController(view).navigate(R.id.registerFragment);
